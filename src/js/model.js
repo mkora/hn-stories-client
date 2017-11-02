@@ -24,8 +24,7 @@ export default class Model {
           data,
         }));
         return data;
-      })
-      .catch(err => console.error(err)); // @todo ask again later
+      });
   }
 
   isUpdated(data) {

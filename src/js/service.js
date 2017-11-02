@@ -25,18 +25,13 @@ export default class Service {
             author.karma
           ];
         } catch (err) {
-          return Service.handleError(err);
+          return Promise.reject(err);
         }
       }));
 
       return stories;
     } catch (err) {
-      return Service.handleError(err);
+      return Promise.reject(err);
     }
-  }
-
-  static handleError(err) {
-    console.error('Server error occurred', err);
-    return null;
   }
 }
