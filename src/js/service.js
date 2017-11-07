@@ -10,6 +10,10 @@ export default class Service {
   async fetch() {
     try {
       const data = await request(`${this.url}topstories.json`);
+      if (!Array.isArray(data) || data.length === 0) {
+        return Promise.reject(new Error('No data has been returned.'));
+      }
+
       const ids = data.slice(0, 10);
       const stories = await Promise.all(ids.map(async (id) => {
         try {
