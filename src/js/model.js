@@ -8,31 +8,37 @@ export default class Model {
   }
 
   get() {
-    const localData = JSON.parse(window.localStorage.getItem(this.storageKey));
+    const localData = this.getLocal();
 
-    if (this.isUpdated(localData)) {
+    if (this.isLocalUpdated(localData)) {
       return new Promise(resolve => resolve(localData.data));
     }
 
     return this.service.fetch()
-      .then(data => data.map(Model.createData))
-      .then((data) => {
-        /* global window */
-        /* eslint no-undef: "error" */
-        window.localStorage.setItem(this.storageKey, JSON.stringify({
-          lastUpdated: new Date().valueOf(),
-          data,
-        }));
-        return data;
-      });
+      .then(data => data.map(Model.createObj))
+      .then(data => this.saveLocal(data));
   }
 
-  isUpdated(data) {
+  isLocalUpdated(data) {
     if (data === null || data.lastUpdated === undefined) return false;
     return (new Date().valueOf() - data.lastUpdated) < this.dataLifetime;
   }
 
-  static createData(data) {
+  getLocal() {
+    return JSON.parse(window.localStorage.getItem(this.storageKey));
+  }
+
+  saveLocal(data) {
+    /* global window */
+    /* eslint no-undef: "error" */
+    window.localStorage.setItem(this.storageKey, JSON.stringify({
+      lastUpdated: new Date().valueOf(),
+      data,
+    }));
+    return data;
+  }
+
+  static createObj(data) {
     const [id, title, url, timestamp, score, author, authorKarma] = data;
     return {
       id,
