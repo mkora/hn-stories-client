@@ -34,14 +34,13 @@ module.exports = {
         loader: ExtractTextPlugin.extract({
           use: 'css-loader',
         }),
-      }      
+      }
     ],
   },
   resolve: {
     extensions: ['.js'],
   },
   devServer: {
-    //contentBase: paths.SRC,
     port: 8008
   },  
 };

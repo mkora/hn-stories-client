@@ -7,6 +7,6 @@ export default class Controller {
   render() {
     this.model.get().then((data) => {
       this.view.render(data);
-    }).catch(err => console.error(err)); // @todo ask again later;
+    }).catch(err => console.error(err)); 
   }
 }
