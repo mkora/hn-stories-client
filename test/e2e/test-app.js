@@ -27,7 +27,7 @@ describe('hn-stories app', function () {
 
   after(() => cleanupChromeDriver(driver));
 
-  it('should work: should have a header and 10 list items', async function () {
+  it('should have a header and 10 list items', async function () {
     await driver.get(`http://localhost:${port}`);
 
     const title = await driver.getTitle();

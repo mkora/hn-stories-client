@@ -14,7 +14,9 @@ export default class Service {
         return Promise.reject(new Error('No data has been returned.'));
       }
 
-      const ids = data.slice(0, 10);
+      const ids = [];
+      for (let i = 0; i < 10; i += 1) ids[i] = data[Math.floor(Math.random() * data.length)];
+
       const stories = await Promise.all(ids.map(async (id) => {
         try {
           const story = await request(`${this.url}item/${id}.json`);

@@ -7,6 +7,6 @@ export const config = { // eslint-disable-line import/prefer-default-export
    * App Settings
    */
   blankURLStory: 'https://news.ycombinator.com/item?id=',
-  localDataLifetime: 600000, // 10 min
+  localDataLifetime: 120000, // 2 min
   localStorageKey: 'client:hnews-stories',
 };
