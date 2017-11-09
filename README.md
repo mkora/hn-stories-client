@@ -4,7 +4,7 @@
 
 10 Hacker News App retrieves and presents 10 random from the most recent stories on HN using the [Ycombinator's API](https://github.com/HackerNews/API). 
 
-## Implementation Notes
+## Notes
 
 - The app is written in Vanilla JavaScript (ES6)
 
