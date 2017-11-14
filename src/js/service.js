@@ -1,5 +1,5 @@
 import { request } from './util';
-import { config } from './config';
+import config from './config';
 
 export default class Service {
   constructor() {
